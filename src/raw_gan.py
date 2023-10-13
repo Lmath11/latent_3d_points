@@ -7,7 +7,7 @@ Created on Apr 27, 2017
 import numpy as np
 import time
 import tensorflow as tf
-from tflearn import is_training
+from tflearn.config import is_training
 
 from . gan import GAN
 from .. fundamentals.layers import safe_log
