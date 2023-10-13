@@ -9,7 +9,7 @@ import os.path as osp
 import tensorflow as tf
 import numpy as np
 
-from tflearn import is_training
+from tflearn.config import is_training
 
 from . in_out import create_dir, pickle_data, unpickle_data
 from . general_utils import apply_augmentations, iterate_in_chunks
