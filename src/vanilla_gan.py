@@ -8,7 +8,7 @@ import numpy as np
 import time
 import tensorflow as tf
 
-from tflearn import is_training
+from tflearn.config import is_training
 from . gan import GAN
 
 
