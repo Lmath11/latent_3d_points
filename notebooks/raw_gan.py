@@ -99,7 +99,7 @@ train_stats = []
 for _ in range(n_epochs):
     loss, duration = gan._single_epoch_train(all_pc_data, batch_size, noise_params)
     epoch = int(gan.sess.run(gan.increment_epoch))
-    print epoch, loss
+    print (epoch, loss)
 
     if save_gan_model and epoch in saver_step:
         checkpoint_path = osp.join(train_dir, MODEL_SAVER_ID)
