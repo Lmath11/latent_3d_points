@@ -17,9 +17,7 @@ from latent_3d_points.src.generators_discriminators import point_cloud_generator
 mlp_discriminator, leaky_relu
 
 
-%load_ext autoreload
-%autoreload 2
-%matplotlib inline
+
 
 # Use to save Neural-Net check-points etc.
 top_out_dir = '../data/'          
