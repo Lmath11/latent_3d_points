@@ -31,7 +31,7 @@ snc_synth_id_to_category = {
     '04256520': 'sofa',      '04330267': 'stove',      '04530566': 'vessel',
     '04554684': 'washer',    '02858304': 'boat',       '02992529': 'cellphone'
 }
-top_dir = '/content/data/shape_net_core_uniform_samples_2048'
+
 
 def snc_category_to_synth_id():
     d = snc_synth_id_to_category
