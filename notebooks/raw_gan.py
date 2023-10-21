@@ -20,10 +20,10 @@ mlp_discriminator, leaky_relu
 
 
 # Use to save Neural-Net check-points etc.
-top_out_dir = '../data/'          
+top_out_dir = '/content/data/'          
 
 # Top-dir of where point-clouds are stored.
-top_in_dir = '../data/shape_net_core_uniform_samples_2048/'
+top_in_dir = '/content/data/shape_net_core_uniform_samples_2048/'
 
 experiment_name = 'raw_gan_with_w_gan_loss'
 
