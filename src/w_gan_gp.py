@@ -26,14 +26,14 @@ class W_GAN_GP(GAN):
         self.discriminator = discriminator
         self.generator = generator
     
-        with tf.variable_scope(name):
+        with tf.compat.v1.variable_scope(name):
             self.noise = tf.placeholder(tf.float32, shape=[None, noise_dim])            # Noise vector.
             self.real_pc = tf.placeholder(tf.float32, shape=[None] + self.n_output)     # Ground-truth.
 
-            with tf.variable_scope('generator'):
+            withtf.compat.v1.variable_scope('generator'):
                 self.generator_out = self.generator(self.noise, self.n_output, **gen_kwargs)
                 
-            with tf.variable_scope('discriminator') as scope:
+            with tf.compat.v1.variable_scope('discriminator') as scope:
                 self.real_prob, self.real_logit = self.discriminator(self.real_pc, scope=scope, **disc_kwargs)
                 self.synthetic_prob, self.synthetic_logit = self.discriminator(self.generator_out, reuse=True, scope=scope, **disc_kwargs)
             
@@ -49,7 +49,7 @@ class W_GAN_GP(GAN):
             differences = self.generator_out - self.real_pc
             interpolates = self.real_pc + (alpha * differences)
 
-            with tf.variable_scope('discriminator') as scope:
+            with tf.compat.v1.variable_scope('discriminator') as scope:
                 gradients = tf.gradients(self.discriminator(interpolates, reuse=True, scope=scope, **disc_kwargs)[1], [interpolates])[0]
 
             # Reduce over all but the first dimension
