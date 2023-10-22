@@ -93,7 +93,7 @@ def decoder_with_fc_only(latent_signal, layer_sizes=[], b_norm=True, non_lineari
     if n_layers < 2:
         raise ValueError('For an FC decoder with single a layer use simpler code.')
 
-    for i in xrange(0, n_layers - 1):
+    for i in range(0, n_layers - 1):
         name = 'decoder_fc_' + str(i)
         scope_i = expand_scope_by_name(scope, name)
 
