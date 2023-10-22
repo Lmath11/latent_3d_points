@@ -36,7 +36,7 @@ def reset_tf_graph():
     '''
     if 'sess' in globals() and sess:
         sess.close()
-    tf.reset_default_graph()
+    tf.compat.v1.reset_default_graph()
     
     
 def leaky_relu(alpha):
