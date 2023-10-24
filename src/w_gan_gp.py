@@ -30,7 +30,7 @@ class W_GAN_GP(GAN):
             self.noise = tf.compat.v1.placeholder(tf.float32, shape=[None, noise_dim])            # Noise vector.
             self.real_pc = tf.compat.v1.placeholder(tf.float32, shape=[None] + self.n_output)     # Ground-truth.
 
-            withtf.compat.v1.variable_scope('generator'):
+            with tf.compat.v1.variable_scope('generator'):
                 self.generator_out = self.generator(self.noise, self.n_output, **gen_kwargs)
                 
             with tf.compat.v1.variable_scope('discriminator') as scope:
