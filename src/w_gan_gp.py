@@ -45,7 +45,7 @@ class W_GAN_GP(GAN):
             # Compute gradient penalty at interpolated points
             ndims = self.real_pc.get_shape().ndims
             batch_size = tf.shape(self.real_pc)[0]
-            alpha = tf.random_uniform(shape=[batch_size] + [1] * (ndims - 1), minval=0., maxval=1.)
+            alpha = tf.random.uniform(shape=[batch_size] + [1] * (ndims - 1), minval=0., maxval=1.)
             differences = self.generator_out - self.real_pc
             interpolates = self.real_pc + (alpha * differences)
 
