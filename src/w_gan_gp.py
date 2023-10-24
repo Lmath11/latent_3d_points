@@ -53,11 +53,11 @@ class W_GAN_GP(GAN):
                 gradients = tf.gradients(self.discriminator(interpolates, reuse=True, scope=scope, **disc_kwargs)[1], [interpolates])[0]
 
             # Reduce over all but the first dimension
-            slopes = tf.sqrt(tf.reduce_sum(tf.square(gradients), reduction_indices=range(1, ndims)))
+            slopes = tf.sqrt(tf.compat.v1.reduce_sum(tf.square(gradients), reduction_indices=range(1, ndims)))
             gradient_penalty = tf.reduce_mean((slopes - 1.) ** 2)
             self.loss_d += lam * gradient_penalty
 
-            train_vars = tf.trainable_variables()
+            train_vars = tf.compat.v1.trainable_variables()
             d_params = [v for v in train_vars if v.name.startswith(name + '/discriminator/')]
             g_params = [v for v in train_vars if v.name.startswith(name + '/generator/')]
 
