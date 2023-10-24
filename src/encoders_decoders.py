@@ -34,7 +34,7 @@ def encoder_with_convs_and_symmetry(in_signal, n_filters=[64, 128, 256, 1024], f
     if n_layers < 2:
         raise ValueError('More than 1 layers are expected.')
 
-    for i in xrange(n_layers):
+    for i in range(n_layers):
         if i == 0:
             layer = in_signal
 
