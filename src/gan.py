@@ -32,7 +32,7 @@ class GAN(Neural_Net):
 
     def optimizer(self, learning_rate, beta, loss, var_list):
         initial_learning_rate = learning_rate
-        optimizer = tf.optimizers.Adam(initial_learning_rate, beta1=beta).minimize(loss, var_list=var_list)
+        optimizer = tf.optimizers.Adam(initial_learning_rate, beta_1=beta).minimize(loss, var_list=var_list)
         return optimizer
 
     def generate(self, n_samples, noise_params):
