@@ -41,7 +41,7 @@ class_choice = ['Cap','Earphone']
 
 DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-class TreeGAN():
+class GAN():
     def __init__(self, args):
         self.args = args
         # ------------------------------------------------Dataset---------------------------------------------- #
@@ -302,5 +302,5 @@ if __name__ == '__main__':
     SAVE_CHECKPOINT = args.ckpt_path + args.ckpt_save if args.ckpt_save is not None else None
     LOAD_CHECKPOINT = args.ckpt_path + args.ckpt_load if args.ckpt_load is not None else None
 
-    model = TreeGAN(args)
+    model = GAN(args)
     model.run(save_ckpt=SAVE_CHECKPOINT, load_ckpt=LOAD_CHECKPOINT)
