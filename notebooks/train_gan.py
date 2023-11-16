@@ -2,12 +2,12 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 
-from data.dataset_benchmark import BenchmarkDataset
-from data.shapenet_dataset import ShapenetDataset
-from Classificador.classificador import Tnet, PointNetBackbone, PointNetClassHead, PointNetSegHead
-from model.gan_network import Generator, Discriminator
-from model.gradient_penalty import GradientPenalty
-from evaluation.FPD import calculate_fpd
+from src.dataset_benchmark import BenchmarkDataset
+from src.shapenet_dataset import ShapenetDataset
+from src.classificador import Tnet, PointNetBackbone, PointNetClassHead, PointNetSegHead
+from src.gan_network import Generator, Discriminator
+from src.gradient_penalty import GradientPenalty
+from src.FPD import calculate_fpd
 
 from arguments import Arguments
 import plotly.express as px
@@ -61,7 +61,7 @@ class TreeGAN():
         self.optimizerD = optim.Adam(self.D.parameters(), lr=args.lr, betas=(0, 0.99))
 
         self.GP = GradientPenalty(args.lambdaGP, gamma=1, device=args.device)
-        print("Network prepared.")
+        print("Treinamento Gan Simples.")
     
         # ----------------------------------------------------------------------------------------------------- #
     
