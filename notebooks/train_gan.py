@@ -2,12 +2,12 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 
-from src.dataset_benchmark import BenchmarkDataset
-from src.shapenet_dataset import ShapenetDataset
-from src.classificador import Tnet, PointNetBackbone, PointNetClassHead, PointNetSegHead
-from src.gan_network import Generator, Discriminator
-from src.gradient_penalty import GradientPenalty
-from src.FPD import calculate_fpd
+from latent_3d_points.src.dataset_benchmark import BenchmarkDataset
+from latent_3d_points.src.shapenet_dataset import ShapenetDataset
+from latent_3d_points.src.classificador import Tnet, PointNetBackbone, PointNetClassHead, PointNetSegHead
+from latent_3d_points.src.gan_network import Generator, Discriminator
+from latent_3d_points.src.gradient_penalty import GradientPenalty
+from latent_3d_points.src.FPD import calculate_fpd
 
 from arguments import Arguments
 import plotly.express as px
