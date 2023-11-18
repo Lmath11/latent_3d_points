@@ -7,8 +7,8 @@ import torch
 from scipy.linalg import sqrtm
 from imageio import imread
 from torch.nn.functional import adaptive_avg_pool2d
-from evaluation.pointnet import PointNetCls
-from data.dataset_benchmark import BenchmarkDataset
+from latent_3d_points.src.pointnet import PointNetCls
+from latent_3d_points.src.dataset_benchmark import BenchmarkDataset
 
 try:
     from tqdm import tqdm
