@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.nn.init as init
 import math
 
-class TreeGCN(nn.Module):
+class rGAN(nn.Module):
     def __init__(self, batch, depth, features, degrees, support=10, node=1, upsample=False, activation=True):
         self.batch = batch
         self.depth = depth
@@ -13,7 +13,7 @@ class TreeGCN(nn.Module):
         self.degree = degrees[depth]
         self.upsample = upsample
         self.activation = activation
-        super(TreeGCN, self).__init__()
+        super(rGAN, self).__init__()
 
         self.W_root = nn.ModuleList([nn.Linear(features[inx], self.out_feature, bias=False) for inx in range(self.depth+1)])
 
