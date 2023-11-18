@@ -3,7 +3,7 @@ import argparse
 
 class Arguments:
     def __init__(self):
-        self._parser = argparse.ArgumentParser(description='Arguments for TreeGAN.')
+        self._parser = argparse.ArgumentParser(description='Arguments for GAN.')
 
         # Dataset argument
         self._parser.add_argument('--dataset_path', type=str, default='/content/shapenetcore_partanno_segmentation_benchmark_v0', help='Dataset file path.')
