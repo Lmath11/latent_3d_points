@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from latent_3d_points.layers.gcn import rGAN
+from latent_3d_points.src.gcn import rGAN
 
 from math import ceil
 
