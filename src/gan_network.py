@@ -67,12 +67,12 @@ class Generator(nn.Module):
         self.gcn = nn.Sequential()
         for inx in range(self.layer_num):
             if inx == self.layer_num-1:
-                self.gcn.add_module('TreeGCN_'+str(inx),
-                                    TreeGCN(self.batch_size, inx, features, degrees, 
+                self.gcn.add_module('rGAN_'+str(inx),
+                                    rGAN(self.batch_size, inx, features, degrees, 
                                             support=support, node=vertex_num, upsample=True, activation=False))
             else:
-                self.gcn.add_module('TreeGCN_'+str(inx),
-                                    TreeGCN(self.batch_size, inx, features, degrees, 
+                self.gcn.add_module('rGAN_'+str(inx),
+                                    rGAN(self.batch_size, inx, features, degrees, 
                                             support=support, node=vertex_num, upsample=True, activation=True))
             vertex_num = int(vertex_num * degrees[inx])
         
