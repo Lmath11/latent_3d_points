@@ -9,7 +9,7 @@ from latent_3d_points.src.gan_network import Generator, Discriminator
 from latent_3d_points.src.gradient_penalty import GradientPenalty
 from latent_3d_points.src.FPD import calculate_fpd
 
-from arguments import Arguments
+from latent_3d_points.arguments import Arguments
 import plotly.express as px
 import pandas as pd
 import time
