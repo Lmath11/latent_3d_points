@@ -47,7 +47,7 @@ class GAN():
         # ------------------------------------------------Dataset---------------------------------------------- #
         self.data = BenchmarkDataset(root=args.dataset_path, npoints=args.point_num, uniform=True, class_choice=class_choice)
         self.dataLoader = torch.utils.data.DataLoader(self.data, batch_size=args.batch_size, shuffle=True, pin_memory=True, num_workers=2)
-        print("Training Dataset : {} prepared.".format(len(self.data)))
+        print("Dataset : {} prepared.".format(len(self.data)))
         # ----------------------------------------------------------------------------------------------------- #
         MODEL_PATH = '/content/drive/MyDrive/ResultadosLothar/Classificador/cls_model_2class_998.pth'
         self.classifier = PointNetClassHead(num_points=args.point_num, num_global_feats=1024, k=16).to(args.device)
@@ -66,7 +66,7 @@ class GAN():
         # ----------------------------------------------------------------------------------------------------- #
     
     def run(self, save_ckpt=None, load_ckpt=None):        
-        color_num = 4
+        """color_num = 4
         chunk_size = int(self.args.point_num / color_num)
         colors = np.array([(227,0,27),(231,64,28),(237,120,15),(246,176,44),
                            (252,234,0),(224,221,128),(142,188,40),(18,126,68),
@@ -74,7 +74,7 @@ class GAN():
                            (0,152,206),(16,68,151),(57,64,139),(96,72,132),
                            (172,113,161),(202,174,199),(145,35,132),(201,47,133),
                            (229,0,123),(225,106,112),(163,38,42),(128,128,128)])
-        colors = colors[np.random.choice(len(colors), color_num, replace=False)]
+        colors = colors[np.random.choice(len(colors), color_num, replace=False)]"""
         label = torch.stack([torch.ones(chunk_size).type(torch.LongTensor) * inx for inx in range(1,int(color_num)+1)], dim=0).view(-1)
 
         if load_ckpt is None:
@@ -158,10 +158,10 @@ class GAN():
         
                 # --------------------- Visualization -------------------- #
 
-                print("[Epoch/Iter] ", "{:3} / {:3}".format(epoch, _iter),
+                print("[Epoch/It] ", "{:3} / {:3}".format(epoch, _iter),
                       "[ D_Loss ] ", "{: 7.6f}".format(d_loss), 
                       "[ G_Loss ] ", "{: 7.6f}".format(g_loss), 
-                      "[ Time ] ", "{:4.2f}s".format(time.time()-start_time))
+                      "[ Tempo/It ] ", "{:4.2f}s".format(time.time()-start_time))
 
                 if _iter % 20 == 0 and _iter !=0:
 
@@ -196,12 +196,12 @@ class GAN():
                     pred_class = list(CATEGORIES.keys())[pred_choice.cpu().numpy()]
                     gen_class = list(CATEGORIES.keys())[pred_choice.cpu().numpy()]
                     pred_prob = preds[0, pred_choice]
-                    print(f'The predicted class is: {pred_class}, with probability: {pred_prob}')
+                    
                     if gen_class == pred_class:
                         certo = certo + 1
                     totalcount = totalcount + 1
                     accuracy = certo / totalcount
-                    print('Acurácia:', accuracy)
+                    
                     fig = go.Figure()
                     fig.add_trace(go.Scatter(x=new_x, y=loss_G,
                                         mode='lines',
@@ -210,6 +210,8 @@ class GAN():
                                         mode='lines',
                                         name='Loss D'))
                     fig.show()
+                    colors = np.array([(227, 0, 27), (231, 64, 28), (237, 120, 15), (246, 176, 44)])
+                    colors = colors[np.random.choice(len(colors), size=len(x), replace=True)]
                     generated_point_cpu = generated_point.to('cpu').detach().numpy()
                     x = generated_point_cpu[:, 2]
                     y = generated_point_cpu[:, 0]
@@ -222,7 +224,6 @@ class GAN():
                         marker=dict(
                             size=2,
                             color=colors,
-                            colorscale='Viridis',  # Adjust the colorscale as per your preference
                             opacity=1,
                         )
                     )
@@ -243,6 +244,8 @@ class GAN():
 
                     # Show the plot
                     fig.show()
+                    print(f'The predicted class is: {pred_class}, with probability: {pred_prob}')
+                    print('Acurácia:', accuracy)
 
 
                     """self.vis.line(X=plot_X, Y=plot_Y, win=1,
@@ -254,8 +257,6 @@ class GAN():
                     """if len(metric['FPD']) > 0:
                         self.vis.line(X=np.arange(len(metric['FPD'])), Y=np.array(metric['FPD']), win=3, 
                                       opts={'title': "Frechet Pointcloud Distance", 'legend': ["FPD best : {}".format(np.min(metric['FPD']))]})"""
-
-                    print('Figures are saved.')
 
             # ---------------------- Save checkpoint --------------------- #
             if epoch % 20 == 0 and not save_ckpt == None:
@@ -287,7 +288,7 @@ class GAN():
                 metric['FPD'].append(fpd)
                 print('[{:4} Epoch] Frechet Pointcloud Distance <<< {:.10f} >>>'.format(epoch, fpd))
                 class_name = class_choice if class_choice is not None else 'all'
-                #torch.save(fake_pointclouds, '/content/drive/MyDrive/ResultadosLothar/Generated/treeGCN3class_{}_{}.pt'.format(str(epoch), class_name))
+                #torch.save(fake_pointclouds, '/content/drive/MyDrive/ResultadosLothar/Generated/rGAN_2class_{}_{}.pt'.format(str(epoch), class_name))
                 del fake_pointclouds
                 
             
