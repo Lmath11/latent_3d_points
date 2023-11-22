@@ -76,8 +76,7 @@ class GAN():
                            (229,0,123),(225,106,112),(163,38,42),(128,128,128)])
         colors = colors[np.random.choice(len(colors), color_num, replace=False)]
         label = torch.stack([torch.ones(chunk_size).type(torch.LongTensor) * inx for inx in range(1,int(color_num)+1)], dim=0).view(-1)"""
-        colors = np.array([(227, 0, 27), (231, 64, 28), (237, 120, 15), (246, 176, 44)])
-        colors = colors[np.random.choice(len(colors), size=len(x), replace=True)]
+        
 
         if load_ckpt is None:
             epoch_log = 0
@@ -217,6 +216,10 @@ class GAN():
                     x = generated_point_cpu[:, 2]
                     y = generated_point_cpu[:, 0]
                     z = generated_point_cpu[:, 1]
+
+                    colors = np.array([(227, 0, 27), (231, 64, 28), (237, 120, 15), (246, 176, 44)])
+                    colors = colors[np.random.choice(len(colors), size=len(x), replace=True)]
+                    
                     trace = go.Scatter3d(
                         x=x,
                         y=y,
