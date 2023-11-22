@@ -74,8 +74,10 @@ class GAN():
                            (0,152,206),(16,68,151),(57,64,139),(96,72,132),
                            (172,113,161),(202,174,199),(145,35,132),(201,47,133),
                            (229,0,123),(225,106,112),(163,38,42),(128,128,128)])
-        colors = colors[np.random.choice(len(colors), color_num, replace=False)]"""
-        label = torch.stack([torch.ones(chunk_size).type(torch.LongTensor) * inx for inx in range(1,int(color_num)+1)], dim=0).view(-1)
+        colors = colors[np.random.choice(len(colors), color_num, replace=False)]
+        label = torch.stack([torch.ones(chunk_size).type(torch.LongTensor) * inx for inx in range(1,int(color_num)+1)], dim=0).view(-1)"""
+        colors = np.array([(227, 0, 27), (231, 64, 28), (237, 120, 15), (246, 176, 44)])
+        colors = colors[np.random.choice(len(colors), size=len(x), replace=True)]
 
         if load_ckpt is None:
             epoch_log = 0
@@ -210,8 +212,7 @@ class GAN():
                                         mode='lines',
                                         name='Loss D'))
                     fig.show()
-                    colors = np.array([(227, 0, 27), (231, 64, 28), (237, 120, 15), (246, 176, 44)])
-                    colors = colors[np.random.choice(len(colors), size=len(x), replace=True)]
+                    
                     generated_point_cpu = generated_point.to('cpu').detach().numpy()
                     x = generated_point_cpu[:, 2]
                     y = generated_point_cpu[:, 0]
