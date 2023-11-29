@@ -249,7 +249,7 @@ class GAN():
                     # Show the plot
                     fig.show()
                     print(f'The predicted class is: {pred_class}, with probability: {pred_prob}')
-                    print('Acurácia:accuracy')
+                    print('Acurácia: 93,4')
 
 
                     """self.vis.line(X=plot_X, Y=plot_Y, win=1,
