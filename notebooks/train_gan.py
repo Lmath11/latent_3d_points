@@ -164,7 +164,7 @@ class GAN():
                       "[ G_Loss ] ", "{: 7.6f}".format(g_loss), 
                       "[ Tempo/It ] ", "{:4.2f}s".format(time.time()-start_time))
 
-                if _iter % 20 == 0 and _iter !=0:
+                if _iter % 600 == 0 and _iter !=0:
 
             
                     generated_point = self.G.getPointcloud()
@@ -263,7 +263,7 @@ class GAN():
                                       opts={'title': "Frechet Pointcloud Distance", 'legend': ["FPD best : {}".format(np.min(metric['FPD']))]})"""
 
             # ---------------------- Save checkpoint --------------------- #
-            if epoch % 50 == 0 and not save_ckpt == None:
+            if epoch % 10 == 0 and not save_ckpt == None:
                 torch.save({
                         'epoch': epoch,
                         'iter': _iter,
