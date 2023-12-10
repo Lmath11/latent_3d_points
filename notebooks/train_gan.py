@@ -19,12 +19,12 @@ import plotly.graph_objects as go
 import torch.nn.functional as F
 
 CATEGORIES = {
-    'Airplane': 0,
+    #'Airplane': 0,
     #'Bag': 1,
-    #'Cap': 2,
+    'Cap': 2,
    # 'Car': 3,
-    'Chair': 4,
-    #'Earphone': 5,
+    #'Chair': 4,
+    'Earphone': 5,
    ## 'Guitar': 6,
    # 'Knife': 7,
    # 'Lamp': 8,
@@ -37,7 +37,7 @@ CATEGORIES = {
    # 'Table': 15
     }
 
-class_choice = ['Airplane','Chair']
+class_choice = ['Cap','Earphone']
 
 DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
 
@@ -49,7 +49,7 @@ class GAN():
         self.dataLoader = torch.utils.data.DataLoader(self.data, batch_size=args.batch_size, shuffle=True, pin_memory=True, num_workers=2)
         print("Dataset : {} prepared.".format(len(self.data)))
         # ----------------------------------------------------------------------------------------------------- #
-        MODEL_PATH = '/content/drive/MyDrive/ResultadosLothar/Classificador/cls_model_49planechair.pth'
+        MODEL_PATH = '/content/drive/MyDrive/ResultadosLothar/Classificador/cls_model_2class_998.pth'
         self.classifier = PointNetClassHead(num_points=args.point_num, num_global_feats=1024, k=16).to(args.device)
         self.classifier.load_state_dict(torch.load(MODEL_PATH))
         self.classifier.eval()
@@ -263,7 +263,7 @@ class GAN():
                                       opts={'title': "Frechet Pointcloud Distance", 'legend': ["FPD best : {}".format(np.min(metric['FPD']))]})"""
 
             # ---------------------- Save checkpoint --------------------- #
-            if epoch % 5 == 0 and not save_ckpt == None:
+            if epoch % 50 == 0 and not save_ckpt == None:
                 torch.save({
                         'epoch': epoch,
                         'iter': _iter,
