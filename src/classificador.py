@@ -5,10 +5,10 @@ import torch.nn.functional as F
 CATEGORIES = {
     #'Airplane': 0,
     'Bag': 1,
-    'Cap': 2,
+    #'Cap': 2,
    # 'Car': 3,
     #'Chair': 4,
-    'Earphone': 5,
+    #'Earphone': 5,
    ## 'Guitar': 6,
    # 'Knife': 7,
    # 'Lamp': 8,
@@ -16,7 +16,7 @@ CATEGORIES = {
    ## 'Motorbike': 10,
     #'Mug': 11,
    # 'Pistol': 12,
-   ## 'Rocket': 13,
+    'Rocket': 13,
     #'Skateboard': 14,
    # 'Table': 15
     }
