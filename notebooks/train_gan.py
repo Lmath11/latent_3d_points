@@ -19,11 +19,11 @@ import plotly.graph_objects as go
 import torch.nn.functional as F
 
 CATEGORIES = {
-    'Airplane': 0,
-    #'Bag': 1,
+    #'Airplane': 0,
+    'Bag': 1,
     #'Cap': 2,
    #'Car': 3,
-    'Chair': 4,
+    #'Chair': 4,
     #'Earphone': 5,
    ## 'Guitar': 6,
    # 'Knife': 7,
@@ -32,12 +32,12 @@ CATEGORIES = {
    ## 'Motorbike': 10,
     #'Mug': 11,
    # 'Pistol': 12,
-   ## 'Rocket': 13,
+    'Rocket': 13,
     #'Skateboard': 14,
    # 'Table': 15
     }
 
-class_choice = ['Airplane','Chair']
+class_choice = ['Bag','Rocket']
 
 DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
 
@@ -49,7 +49,7 @@ class GAN():
         self.dataLoader = torch.utils.data.DataLoader(self.data, batch_size=args.batch_size, shuffle=True, pin_memory=True, num_workers=2)
         print("Dataset : {} prepared.".format(len(self.data)))
         # ----------------------------------------------------------------------------------------------------- #
-        MODEL_PATH = '/content/drive/MyDrive/ResultadosLothar/Classificador/cls_model_2class_998.pth'
+        MODEL_PATH = '/content/drive/MyDrive/ResultadosLothar/Classificador/cls_model_167.pth'
         self.classifier = PointNetClassHead(num_points=args.point_num, num_global_feats=1024, k=16).to(args.device)
         self.classifier.load_state_dict(torch.load(MODEL_PATH))
         self.classifier.eval()
@@ -164,7 +164,7 @@ class GAN():
                       "[ G_Loss ] ", "{: 7.6f}".format(g_loss), 
                       "[ Tempo/It ] ", "{:4.2f}s".format(time.time()-start_time))
 
-                if _iter % 10 == 0 and _iter !=0:
+                if _iter % 20 == 0 and _iter !=0:
 
             
                     generated_point = self.G.getPointcloud()
@@ -263,7 +263,7 @@ class GAN():
                                       opts={'title': "Frechet Pointcloud Distance", 'legend': ["FPD best : {}".format(np.min(metric['FPD']))]})"""
 
             # ---------------------- Save checkpoint --------------------- #
-            if epoch % 50 == 0 and not save_ckpt == None:
+            if epoch % 100 == 0 and not save_ckpt == None:
                 torch.save({
                         'epoch': epoch,
                         'iter': _iter,
