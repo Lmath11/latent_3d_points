@@ -15,7 +15,7 @@ class Arguments:
         self._parser.add_argument('--gpu', type=int, default=0, help='GPU number to use.')
         self._parser.add_argument('--epochs', type=int, default=3001, help='Integer value for epochs.')
         self._parser.add_argument('--lr', type=float, default=1e-4, help='Float value for learning rate.')
-        self._parser.add_argument('--ckpt_path', type=str, default='/content/drive/MyDrive/ResultadosLothar/Gan/bag_rocket/', help='Checkpoint path.')
+        self._parser.add_argument('--ckpt_path', type=str, default='/content/drive/MyDrive/ResultadosLothar/GAN/bag_rocket/', help='Checkpoint path.')
         self._parser.add_argument('--ckpt_save', type=str, default='rGAN_bag_rocket_ckpt_', help='Checkpoint name to save.')
         self._parser.add_argument('--ckpt_load', type=str, default ='rGAN_bag_rocket_ckpt_3000.pt', help='Checkpoint name to load.')
         self._parser.add_argument('--visdom_port', type=int, default=8097, help='Visdom port number. (default:8097)')
