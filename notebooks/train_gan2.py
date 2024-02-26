@@ -37,7 +37,7 @@ CATEGORIES = {
     'Table': 15
     }
 
-class_choice = ['Bag','Rocket']
+class_choice = ['Airplane','Chair']
 
 DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
 
@@ -61,7 +61,7 @@ class GAN():
         self.optimizerD = optim.Adam(self.D.parameters(), lr=args.lr, betas=(0, 0.99))
 
         self.GP = GradientPenalty(args.lambdaGP, gamma=1, device=args.device)
-        print("Treinamento Gan Simples.")
+        print("Treinamento TreeGan.")
     
         # ----------------------------------------------------------------------------------------------------- #
     
@@ -164,7 +164,7 @@ class GAN():
                       "[ G_Loss ] ", "{: 7.6f}".format(g_loss), 
                       "[ Tempo/It ] ", "{:4.2f}s".format(time.time()-start_time))
 
-                if _iter % 5 == 0 and _iter !=0:
+                if _iter % 20 == 0 and _iter !=0:
 
             
                     generated_point = self.G.getPointcloud()
