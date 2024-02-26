@@ -37,7 +37,7 @@ CATEGORIES = {
     'Table': 15
     }
 
-class_choice = ['Bag','Rocket']
+class_choice = ['Cap','Earphone']
 
 DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
 
@@ -61,7 +61,7 @@ class GAN():
         self.optimizerD = optim.Adam(self.D.parameters(), lr=args.lr, betas=(0, 0.99))
 
         self.GP = GradientPenalty(args.lambdaGP, gamma=1, device=args.device)
-        print("Treinamento Gan Simples.")
+        print("Treinamento DCGAN.")
     
         # ----------------------------------------------------------------------------------------------------- #
     
