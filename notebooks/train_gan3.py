@@ -37,7 +37,7 @@ CATEGORIES = {
     'Table': 15
     }
 
-class_choice = ['Airplane','Chair']
+class_choice = ['Bag','Rocket']
 
 DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
 
@@ -164,7 +164,7 @@ class GAN():
                       "[ G_Loss ] ", "{: 7.6f}".format(g_loss), 
                       "[ Tempo/It ] ", "{:4.2f}s".format(time.time()-start_time))
 
-                if _iter % 20 == 0 and _iter !=0:
+                if _iter % 5 == 0 and _iter !=0:
 
             
                     generated_point = self.G.getPointcloud()
