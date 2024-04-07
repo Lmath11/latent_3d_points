@@ -164,7 +164,7 @@ class GAN():
                       "[ G_Loss ] ", "{: 7.6f}".format(g_loss), 
                       "[ Tempo/It ] ", "{:4.2f}s".format(time.time()-start_time))
 
-                if _iter % 5 == 0 and _iter !=0:
+                if _iter % 15 == 0 and _iter !=0:
 
             
                     generated_point = self.G.getPointcloud()
