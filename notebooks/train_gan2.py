@@ -37,7 +37,6 @@ CATEGORIES = {
     'Table': 15
     }
 
-class_choice = ['Airplane','Chair']
 
 DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
 
@@ -164,7 +163,7 @@ class GAN():
                       "[ G_Loss ] ", "{: 7.6f}".format(g_loss), 
                       "[ Tempo/It ] ", "{:4.2f}s".format(time.time()-start_time))
 
-                if _iter % 20 == 0 and _iter !=0:
+                if _iter % 20000 == 0 and _iter !=0:
 
             
                     generated_point = self.G.getPointcloud()
@@ -263,7 +262,7 @@ class GAN():
                                       opts={'title': "Frechet Pointcloud Distance", 'legend': ["FPD best : {}".format(np.min(metric['FPD']))]})"""
 
             # ---------------------- Save checkpoint --------------------- #
-            if epoch % 100 == 0 and not save_ckpt == None:
+            if epoch % 2 == 0 and not save_ckpt == None:
                 torch.save({
                         'epoch': epoch,
                         'iter': _iter,
