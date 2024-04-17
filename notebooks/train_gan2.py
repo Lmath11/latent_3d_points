@@ -44,7 +44,7 @@ class GAN():
     def __init__(self, args):
         self.args = args
         # ------------------------------------------------Dataset---------------------------------------------- #
-        self.data = BenchmarkDataset(root=args.dataset_path, npoints=args.point_num, uniform=True, class_choice=class_choice)
+        self.data = BenchmarkDataset(root=args.dataset_path, npoints=args.point_num, uniform=True)
         self.dataLoader = torch.utils.data.DataLoader(self.data, batch_size=args.batch_size, shuffle=True, pin_memory=True, num_workers=2)
         print("Dataset : {} prepared.".format(len(self.data)))
         # ----------------------------------------------------------------------------------------------------- #
