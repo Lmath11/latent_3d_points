@@ -290,7 +290,7 @@ class GAN():
                 fpd = calculate_fpd(fake_pointclouds, batch_size=100, dims=1808, device=self.args.device)
                 metric['FPD'].append(fpd)
                 print('[{:4} Epoch] Frechet Pointcloud Distance <<< {:.10f} >>>'.format(epoch, fpd))
-                class_name = class_choice if class_choice is not None else 'all'
+                #class_name = class_choice if class_choice is not None else 'all'
                 #torch.save(fake_pointclouds, '/content/drive/MyDrive/ResultadosLothar/Generated/rGAN_2class_{}_{}.pt'.format(str(epoch), class_name))
                 del fake_pointclouds
                 
