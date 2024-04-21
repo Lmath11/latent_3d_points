@@ -262,7 +262,7 @@ class GAN():
                                       opts={'title': "Frechet Pointcloud Distance", 'legend': ["FPD best : {}".format(np.min(metric['FPD']))]})"""
 
             # ---------------------- Save checkpoint --------------------- #
-            if epoch % 2 == 0 and not save_ckpt == None:
+            if epoch % 1 == 0 and not save_ckpt == None:
                 torch.save({
                         'epoch': epoch,
                         'iter': _iter,
