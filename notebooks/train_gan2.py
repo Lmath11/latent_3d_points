@@ -209,7 +209,7 @@ class GAN():
                     fig.add_trace(go.Scatter(x=new_x, y=loss_D,
                                         mode='lines',
                                         name='Loss D'))
-                    fig.show()
+                    #fig.show()
                     
                     generated_point_cpu = generated_point.to('cpu').detach().numpy()
                     x = generated_point_cpu[:, 2]
