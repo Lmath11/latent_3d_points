@@ -37,7 +37,7 @@ CATEGORIES = {
     'Table': 15
     }
 
-class_choice = ['Airplane','Chair']
+
 
 DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
 
@@ -164,7 +164,7 @@ class GAN():
                       "[ G_Loss ] ", "{: 7.6f}".format(g_loss), 
                       "[ Tempo/It ] ", "{:4.2f}s".format(time.time()-start_time))
 
-                if _iter % 5 == 0 and _iter !=0:
+                if _iter % 25 == 0 and _iter !=0:
 
             
                     generated_point = self.G.getPointcloud()
@@ -210,7 +210,7 @@ class GAN():
                     fig.add_trace(go.Scatter(x=new_x, y=loss_D,
                                         mode='lines',
                                         name='Loss D'))
-                    fig.show()
+                    #fig.show()
                     
                     generated_point_cpu = generated_point.to('cpu').detach().numpy()
                     x = generated_point_cpu[:, 2]
