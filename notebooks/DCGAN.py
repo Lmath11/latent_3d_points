@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.optim as optim
-
+import torch.serialization
 from latent_3d_points.src.dataset_benchmark import BenchmarkDataset
 from latent_3d_points.src.shapenet_dataset import ShapenetDataset
 from latent_3d_points.src.classificador import Tnet, PointNetBackbone, PointNetClassHead, PointNetSegHead
@@ -89,7 +89,7 @@ class GAN():
         else:
             metric = {}
             loss_log = {'G_loss': [], 'D_loss': []}
-            checkpoint = torch.load(load_ckpt)
+            checkpoint = torch.load(load_ckpt,weights_only=False)
             self.D.load_state_dict(checkpoint['D_state_dict'])
             self.G.load_state_dict(checkpoint['G_state_dict'])
 
@@ -164,7 +164,7 @@ class GAN():
                       "[ G_Loss ] ", "{: 7.6f}".format(g_loss), 
                       "[ Tempo/It ] ", "{:4.2f}s".format(time.time()-start_time))
 
-                if _iter % 25 == 0 and _iter !=0:
+                if _iter % 10 == 0 and _iter !=0:
 
             
                     generated_point = self.G.getPointcloud()
@@ -238,7 +238,10 @@ class GAN():
                         scene=dict(
                             xaxis_title='X',
                             yaxis_title='Y',
-                            zaxis_title='Z'
+                            zaxis_title='Z',
+                            xaxis = dict(visible=False),
+                            yaxis = dict(visible=False),
+                            zaxis = dict(visible=False)
                         ),
                         width=800,
                         height=800
