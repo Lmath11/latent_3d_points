@@ -5,7 +5,7 @@ import os.path
 import torch
 import numpy as np
 
-class_choice = ["Airplane","Chair"]
+#class_choice = ["Airplane","Chair"]
 
 class BenchmarkDataset(data.Dataset):
     def __init__(self, root, npoints=2500, uniform=False, classification=True):
