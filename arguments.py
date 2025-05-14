@@ -15,7 +15,7 @@ class Arguments:
         self._parser.add_argument('--gpu', type=int, default=0, help='GPU number to use.')
         self._parser.add_argument('--epochs', type=int, default=4001, help='Integer value for epochs.')
         self._parser.add_argument('--lr', type=float, default=1e-4, help='Float value for learning rate.')
-        self._parser.add_argument('--ckpt_path', type=str, default='/content/drive/MyDrive/ResultadosLothar/Treegan/balanceado/', help='Checkpoint path.')
+        self._parser.add_argument('--ckpt_path', type=str, default='/content/drive/MyDrive/ResultadosLothar/Treegan/Balanceado/', help='Checkpoint path.')
         self._parser.add_argument('--ckpt_save', type=str, default='tree_balanceado_ckpt_', help='Checkpoint name to save.')
         self._parser.add_argument('--ckpt_load', type=str, default='TreeGAN_Balanceado_ckpt_56.pt', help='Checkpoint name to load.')
         self._parser.add_argument('--visdom_port', type=int, default=8097, help='Visdom port number. (default:8097)')
