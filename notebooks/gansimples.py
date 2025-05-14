@@ -57,8 +57,8 @@ class GAN():
         self.G = Generator(batch_size=args.batch_size, features=args.G_FEAT, degrees=args.DEGREE, support=args.support).to(args.device)
         self.D = Discriminator(batch_size=args.batch_size, features=args.D_FEAT).to(args.device)             
         
-        self.optimizerG = optim.Adam(self.G.parameters(), lr=args.lr, betas=(0, 0.99))
-        self.optimizerD = optim.Adam(self.D.parameters(), lr=args.lr, betas=(0, 0.99))
+        self.optimizerG = optim.Adam(self.G.parameters(), lr=args.lr, betas=(0.0, 0.99)) # Modified line: betas now (0.0, 0.99)
+        self.optimizerD = optim.Adam(self.D.parameters(), lr=args.lr, betas=(0.0, 0.99))
 
         self.GP = GradientPenalty(args.lambdaGP, gamma=1, device=args.device)
         print("Treinamento Gan Simples.")
