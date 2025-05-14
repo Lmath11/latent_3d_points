@@ -237,7 +237,10 @@ class GAN():
                         scene=dict(
                             xaxis_title='X',
                             yaxis_title='Y',
-                            zaxis_title='Z'
+                            zaxis_title='Z',
+                            xaxis = dict(visible=False),
+                            yaxis = dict(visible=False),
+                            zaxis = dict(visible=False)
                         ),
                         width=800,
                         height=800
